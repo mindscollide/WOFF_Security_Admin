@@ -47,7 +47,7 @@ const refrshtokenSuccess = (response, message) => {
     message: message,
   };
 };
-const signIn = (UserData, history) => {
+const signIn = (UserData, navigate) => {
   var min = 10000;
   var max = 90000;
   var id = min + Math.random() * (max - min);
@@ -79,7 +79,7 @@ const signIn = (UserData, history) => {
             );
             dispatch(newRequestListCount(response.data.responseResult.userID));
             console.log(response);
-            history.push("/WofSecurityAdmin/Admin/AddEditUsers");
+            navigate("/WofSecurityAdmin/Admin/AddEditUsers");
           } else {
             dispatch(
               signinFail(
@@ -103,7 +103,7 @@ const signIn = (UserData, history) => {
   };
 };
 const refreshToken = (props) => {
-  let history = Helper.history;
+  let navigate = Helper.navigate;
   let Token = JSON.parse(localStorage.getItem("token"));
   let RefreshToken = JSON.parse(localStorage.getItem("refreshToken"));
   let Data = {
@@ -140,9 +140,9 @@ const refreshToken = (props) => {
             )
           );
           let message = "Your Session has expired";
-          // history.push("/");
+          // navigate("/");
           console.log("logout");
-          dispatch(signOut(history, message));
+          dispatch(signOut(navigate, message));
         }
       })
       .catch((response) => {
@@ -150,8 +150,8 @@ const refreshToken = (props) => {
       });
   };
 };
-const signOut = (history, message) => {
-  history.push("/");
+const signOut = (navigate, message) => {
+  navigate("/");
   if (message !== "") {
     return {
       type: actions.SIGN_OUT,

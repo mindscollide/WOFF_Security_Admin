@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
     case actions.SOMETHINGWENTWRONGREMOVE:
       return { ...state, SomeThingWentWrong: false };
     default:
-      return { ...state };
+      return state;
   }
 };
 

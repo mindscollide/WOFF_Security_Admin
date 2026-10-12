@@ -58,7 +58,7 @@ const reducer = (state = initialState, action) => {
     case actions.SHOW:
       return { ...state, isSuccess: true };
     default:
-      return { ...state };
+      return state;
   }
 };
 

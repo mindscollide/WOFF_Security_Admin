@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Box } from "@material-ui/core";
-import { Typography, Space } from "antd";
-import AddIcon from "@material-ui/icons/Add";
-import { DownloadOutlined } from "@ant-design/icons";
-import Search from "@material-ui/icons/Search";
-import Edit from "@material-ui/icons/Edit";
-import Restore from "@material-ui/icons/Restore";
+import { Typography, Space, Row, Col } from "antd";
+import {
+  DownloadOutlined,
+  SearchOutlined as Search,
+  UndoOutlined as Restore,
+} from "@ant-design/icons";
 import {
   removeDashesFromDate,
   DateDisplayFormat,
@@ -13,7 +12,6 @@ import {
   removeDashesFromDate2,
 } from "../../../../Common/Functions/date-formatter";
 import {
-  CheckBox,
   SelectBox,
   Button,
   Table,
@@ -34,7 +32,6 @@ import { useDispatch, useSelector } from "react-redux";
 const UserReports = () => {
   const { Title, Text } = Typography;
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
   const [open, setOpen] = useState({
     flag: false,
     message: "",
@@ -148,8 +145,8 @@ const UserReports = () => {
   return (
     <>
       <Title level={3}>User Reports</Title>
-      <Grid container spacing={1}>
-        <Grid item lg={2} md={2} sm={12}>
+      <Row gutter={8}>
+        <Col lg={4} md={4} sm={24}>
           <TextField
             name="LDAPAccount"
             fullWidth
@@ -158,8 +155,8 @@ const UserReports = () => {
             change={handleChange}
             value={State.LDAPAccount}
           />
-        </Grid>
-        <Grid item lg={2} md={2} sm={12}>
+        </Col>
+        <Col lg={4} md={4} sm={24}>
           <SelectBox
             label="StatusID"
             change={handleForStatus}
@@ -167,8 +164,8 @@ const UserReports = () => {
             value={StatusValue}
             propertyName={"Fullname"}
           />
-        </Grid>
-        <Grid item lg={2} md={2} sm={12}>
+        </Col>
+        <Col lg={4} md={4} sm={24}>
           <TextField
             fullWidth
             name="FirstName"
@@ -177,8 +174,8 @@ const UserReports = () => {
             change={handleChange}
             value={State.FirstName}
           />
-        </Grid>
-        <Grid item lg={2} md={2} sm={12}>
+        </Col>
+        <Col lg={4} md={4} sm={24}>
           <TextField
             fullWidth
             name="LastName"
@@ -187,9 +184,9 @@ const UserReports = () => {
             change={handleChange}
             value={State.LastName}
           />
-        </Grid>
+        </Col>
 
-        <Grid item lg={4} md={4} sm={12}>
+        <Col lg={8} md={8} sm={24}>
           <StartToEndDate
             // change={datehandler}
             label={"Date Range"}
@@ -201,8 +198,8 @@ const UserReports = () => {
             endvalue={State.DateTO!==null && State.DateFrom!=="" ?DateDisplayFormat(State.DateTO):null}
             DateRange={true}
           />
-        </Grid>
-        <Grid item md={12} lg={12} sm={12} align="center">
+        </Col>
+        <Col md={24} lg={24} sm={24} align="center">
           <Space>
             {/* <Button
               text="Search"
@@ -219,11 +216,11 @@ const UserReports = () => {
               click={resetData}
             />
           </Space>
-        </Grid>
-        <Grid style={{ marginTop: "1%" }} item lg={12} md={11} sm={12}>
+        </Col>
+        <Col style={{ marginTop: "1%" }} lg={24} md={22} sm={24}>
           <Title level={3}>User Status</Title>
-        </Grid>
-        <Grid item lg={3} md={3} sm={12}>
+        </Col>
+        <Col lg={6} md={6} sm={24}>
           <Button
             text="Access Details"
             icon={<DownloadOutlined />}
@@ -232,8 +229,8 @@ const UserReports = () => {
             click={() => dispatch(downloadAccessDetailReport(State))}
             ghost
           />
-        </Grid>
-        <Grid item lg={3} md={3} sm={12}>
+        </Col>
+        <Col lg={6} md={6} sm={24}>
           <Button
             text="Login History"
             icon={<DownloadOutlined />}
@@ -242,8 +239,8 @@ const UserReports = () => {
             click={() => dispatch(downloadLoginHistoryReport(State))}
             ghost
           />
-        </Grid>
-        <Grid item lg={3} md={3} sm={12}>
+        </Col>
+        <Col lg={6} md={6} sm={24}>
           <Button
             text="Status Wise"
             icon={<DownloadOutlined />}
@@ -252,8 +249,8 @@ const UserReports = () => {
             click={() => dispatch(downloadStatusWiseReport(State))}
             ghost
           />
-        </Grid>
-        <Grid item lg={3} md={3} sm={12}>
+        </Col>
+        <Col lg={6} md={6} sm={24}>
           <Button
             text="Last Login"
             icon={<DownloadOutlined />}
@@ -262,8 +259,8 @@ const UserReports = () => {
             click={() => dispatch(lastLoginReport(State))}
             ghost
           />
-        </Grid>
-      </Grid>
+        </Col>
+      </Row>
       <Notification setOpen={setOpen} open={open.flag} message={open.message} />
     </>
   );

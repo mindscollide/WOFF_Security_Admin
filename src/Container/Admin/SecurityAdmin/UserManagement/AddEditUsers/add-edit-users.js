@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Box } from "@material-ui/core";
-import { Typography } from "antd";
-import AddIcon from "@material-ui/icons/Add";
-import Restore from "@material-ui/icons/Restore";
-// import {StopOutlined} from  '@material-ui/icons/StopOutlined';
+import { Typography, Row, Col } from "antd";
+import { UndoOutlined as Restore } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "react-redux";
 import { roles } from "../../../../../Common/SelectFieldOption/select-field-option";
@@ -28,8 +25,8 @@ import {
 } from "../../../../../store/actions/request-actions";
 const AddEditUsers = () => {
   const { Title } = Typography;
-  const state = useSelector((state) => state);
-  const { requestReducer, ui } = state;
+  const requestReducer = useSelector((state) => state.requestReducer);
+  const ui = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [id, setId] = useState();
@@ -712,8 +709,8 @@ const AddEditUsers = () => {
   return (
     <>
       <Title level={3}>Edit User</Title>
-      <Grid container spacing={1}>
-        <Grid item lg={3} md={3} sm={12}>
+      <Row gutter={8}>
+        <Col lg={6} md={6} sm={24}>
           <TextField
             fullWidth
             label="Login ID"
@@ -722,8 +719,8 @@ const AddEditUsers = () => {
             value={searchData.LoginID}
             change={fieldsHandler}
           />
-        </Grid>
-        {/* <Grid item lg={3} md={3} sm={12}>
+        </Col>
+        {/* <Col lg={6} md={6} sm={24}>
           <TextField
             fullWidth
             label="Email"
@@ -732,8 +729,8 @@ const AddEditUsers = () => {
             value={searchData.Email}
             change={fieldsHandler}
           />
-        </Grid> */}
-        <Grid item lg={3} md={3} sm={12}>
+        </Col> */}
+        <Col lg={6} md={6} sm={24}>
           <TextField
             fullWidth
             label="First Name"
@@ -742,8 +739,8 @@ const AddEditUsers = () => {
             value={searchData.FirstName}
             change={fieldsHandler}
           />
-        </Grid>
-        <Grid item lg={3} md={3} sm={12}>
+        </Col>
+        <Col lg={6} md={6} sm={24}>
           <TextField
             fullWidth
             label="Last Name"
@@ -752,8 +749,8 @@ const AddEditUsers = () => {
             value={searchData.LastName}
             change={fieldsHandler}
           />
-        </Grid>
-        <Grid item lg={3} md={3} sm={12}>
+        </Col>
+        <Col lg={6} md={6} sm={24}>
           <SelectBox
             label="Select Role"
             size="small"
@@ -763,8 +760,8 @@ const AddEditUsers = () => {
             value={userRoleValue}
             change={fieldsHandler}
           />
-        </Grid>
-        <Grid item lg={3} md={3} sm={12}>
+        </Col>
+        <Col lg={6} md={6} sm={24}>
           <SelectBox
             label="Select Status"
             size="small"
@@ -774,18 +771,18 @@ const AddEditUsers = () => {
             value={userStatusValue}
             change={fieldsHandler}
           />
-        </Grid>
-        <Grid item md={6} lg={6} sm={12} align="right">
-          <Box display="flex">
-            <Box width={1.5 / 8}>
+        </Col>
+        <Col md={12} lg={12} sm={24} align="right">
+          <div style={{ display: "flex" }}>
+            <div style={{ width: "18.75%" }}>
               <Button
                 applyClass="btnDarkSolid"
                 text="Search"
                 icon={<i className="icon-search icon-size-one"></i>}
                 click={searchHandler}
               />
-            </Box>
-            <Box width={1.5 / 8}>
+            </div>
+            <div style={{ width: "18.75%" }}>
               <Button
                 text="Reset"
                 icon={<Restore />}
@@ -793,20 +790,20 @@ const AddEditUsers = () => {
                 size="small"
                 click={resetData}
               />
-            </Box>
-          </Box>
-        </Grid>
+            </div>
+          </div>
+        </Col>
 
         <div style={{ marginTop: "10%" }} />
-        <Grid item md={12} lg={12} sm={12}>
+        <Col md={24} lg={24} sm={24}>
           <Table
             rows={row}
             columns={columns}
             pagination={false}
             scroll={{ x: "max-content" }}
           />
-        </Grid>
-      </Grid>
+        </Col>
+      </Row>
 
       {/* modal starts here */}
       <Modal
@@ -823,33 +820,24 @@ const AddEditUsers = () => {
       >
         {actions.add && (
           <>
-            <Box
-              display="flex"
-              justifyContent="center"
-              style={{ padding: "40px" }}
-            >
+            <div style={{ display: "flex", justifyContent: "center", padding: "40px" }}>
               <div className="icon-add-user icon-size-two"></div>
               <Title level={3} align="center">
                 Are you sure you want add to user?
               </Title>
-            </Box>
-            <Box align="center">
+            </div>
+            <div align="center">
               <Button
                 click={handleCancel}
                 applyClass="btnBorderStyledBeach"
                 text="Proceed"
                 endIcon={<i className="icon-proceed icon-size-one"></i>}
               />
-            </Box>
+            </div>
           </>
         )}
         {actions.edit && (
-          <Box
-            display="flex"
-            justifyContent="center"
-            flexDirection="column"
-            style={{ padding: "40px" }}
-          >
+          <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", padding: "40px" }}>
             <TextField
               focus
               disable
@@ -859,8 +847,8 @@ const AddEditUsers = () => {
               disabled={true}
             />
             <div style={{ marginTop: "3%" }} />
-            <Grid container spacing={2}>
-              <Grid item md={6} lg={6} sm={6}>
+            <Row gutter={16}>
+              <Col md={12} lg={12} sm={12}>
                 <SelectBox
                   label="Select Role"
                   name="SelectRole"
@@ -868,8 +856,8 @@ const AddEditUsers = () => {
                   value={userMRole}
                   change={editUserDataHnaler}
                 />
-              </Grid>
-              <Grid item md={6} lg={6} sm={6}>
+              </Col>
+              <Col md={12} lg={12} sm={12}>
                 <SelectBox
                   label="Select Status"
                   name="SelectStaus"
@@ -877,11 +865,11 @@ const AddEditUsers = () => {
                   value={userMStatus}
                   change={editUserDataHnaler}
                 />
-              </Grid>
-            </Grid>
+              </Col>
+            </Row>
             <div style={{ marginTop: "7%" }} />
             <GroupedButtons data={editButtonProps} />
-          </Box>
+          </div>
         )}
       </Modal>
       {/* a separate modal for edit user prompt */}
@@ -892,24 +880,20 @@ const AddEditUsers = () => {
             modalState={isModalVisible}
             width={700}
           >
-            <Box
-              display="flex"
-              justifyContent="center"
-              style={{ padding: "40px" }}
-            >
+            <div style={{ display: "flex", justifyContent: "center", padding: "40px" }}>
               <div className="icon-update-user icon-size-two"></div>
               <Title level={3} align="center">
                 Are you sure you want update to user?
               </Title>
-            </Box>
-            <Box align="center">
+            </div>
+            <div align="center">
               <Button
                 click={handleProceed}
                 applyClass="btnBorderStyledBeach"
                 text="Proceed"
                 endIcon={<i className="icon-proceed icon-size-one"></i>}
               />
-            </Box>
+            </div>
           </Modal>
         </>
       )}

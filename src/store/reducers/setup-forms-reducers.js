@@ -117,7 +117,7 @@ const SetupFormReducer = (state = initialState, action) => {
     case actions.SHOW:
       return { ...state, ShowNotification: true, Message: action.message };
     default:
-      return { ...state };
+      return state;
   }
 };
 

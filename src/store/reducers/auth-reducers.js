@@ -104,7 +104,7 @@ const reducer = (state = initialState, action) => {
         SessionExpeireResponseMessage: action.message,
       };
     default:
-      return { ...state };
+      return state;
   }
 };
 

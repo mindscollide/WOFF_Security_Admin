@@ -146,7 +146,7 @@ const editUserFail = (response, message) => {
 };
 // APIS
 const newRequestList = (UserData) => {
-  let history = Helper.history;
+  let navigate = Helper.navigate;
   let Data = {
     UserID: UserData,
   };

@@ -90,7 +90,7 @@ const reportsReducer = (state = initialState, action) => {
             : action.response.responseMessage,
       };
     default:
-      return { ...state };
+      return state;
   }
 };
 

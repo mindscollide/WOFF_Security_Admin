@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Input, Typography, Space } from "antd";
-import { Grid, Box, Container } from "@material-ui/core";
+import { Input, Typography, Space, Row, Col } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import MultiStep from "../../../../../Components/Elements/MultiStep/multi-step";
-import AddIcon from "@material-ui/icons/Add";
 import {
   saveUserBySecurityAdmin,
   rejectUserBySecurityAdmin,
@@ -30,8 +27,8 @@ import {
 const CreateEditRoles = () => {
   const { Title } = Typography;
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-  const { wofApprovals, requestReducer, ui } = state;
+  const requestReducer = useSelector((state) => state.requestReducer);
+  const ui = useSelector((state) => state.ui);
   const [showUrduContent, setShowUrduContent] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [rejectionComment, setRejectionComment] = useState("");
@@ -303,17 +300,17 @@ const CreateEditRoles = () => {
   return (
     <>
       <Title level={3}>Create User</Title>
-      <Grid container spacing={1}>
+      <Row gutter={8}>
         <div style={{ marginTop: "10%" }} />
-        <Grid item md={12} lg={12} sm={12}>
+        <Col md={24} lg={24} sm={24}>
           <Table
             rows={rows}
             columns={columns}
             pagination={false}
             scroll={{ x: "max-content" }}
           />
-        </Grid>
-      </Grid>
+        </Col>
+      </Row>
       {console.log(actions.add)}
       {/* modal starts here */}
       <Modal
@@ -330,11 +327,11 @@ const CreateEditRoles = () => {
         {actions.add && (
           <>
             <Title level={5}>Are you sure you want to creat new user</Title>
-            <Grid container spacing={1}>
-              <Grid item md={4} lg={4} sm={12}></Grid>
-              <Grid item md={8} lg={8} sm={12}>
-                <Box display="flex">
-                  <Box width={2 / 6}>
+            <Row gutter={8}>
+              <Col md={8} lg={8} sm={24}></Col>
+              <Col md={16} lg={16} sm={24}>
+                <div style={{ display: "flex" }}>
+                  <div style={{ width: "33.3333%" }}>
                     <Button
                       applyClass="buttonPrimary3"
                       text="Proceed"
@@ -342,28 +339,24 @@ const CreateEditRoles = () => {
                       click={createUser}
                     />
                     {console.log()}
-                  </Box>
+                  </div>
                   <div style={{ margin: "0 5px 0 5px" }} />
-                  <Box width={2 / 6}>
+                  <div style={{ width: "33.3333%" }}>
                     <Button
                       applyClass="btnBorderStyledRed"
                       text="discard"
                       icon={<i className="icon-close icon-size-one"></i>}
                       click={handleCancel}
                     />
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid>
+                  </div>
+                </div>
+              </Col>
+            </Row>
           </>
         )}
         {actions.edit && (
           <>
-            <Box
-              display="flex"
-              justifyContent="center"
-              style={{ padding: "40px" }}
-            >
+            <div style={{ display: "flex", justifyContent: "center", padding: "40px" }}>
               <p className="m-0" style={{ color: "#b27706" }}>
                 Type your Comments<span style={{ color: "#ce0000" }}>*</span>
               </p>
@@ -376,12 +369,12 @@ const CreateEditRoles = () => {
                 fullWidth
                 name="Comments"
               />
-            </Box>
-            <Grid container spacing={1}>
-              <Grid item md={4} lg={4} sm={12}></Grid>
-              <Grid item md={8} lg={8} sm={12}>
-                <Box display="flex">
-                  <Box width={2 / 6}>
+            </div>
+            <Row gutter={8}>
+              <Col md={8} lg={8} sm={24}></Col>
+              <Col md={16} lg={16} sm={24}>
+                <div style={{ display: "flex" }}>
+                  <div style={{ width: "33.3333%" }}>
                     <Button
                       applyClass="buttonPrimary3"
                       text="Proceed "
@@ -389,9 +382,9 @@ const CreateEditRoles = () => {
                       click={rejectUser}
                       disableBtn={btnDisabled}
                     />
-                  </Box>
+                  </div>
                   <div style={{ margin: "0 5px 0 5px" }} />
-                  <Box width={2 / 6}>
+                  <div style={{ width: "33.3333%" }}>
                     <Button
                       applyClass="btnBorderStyledRed"
                       text="discard "
@@ -400,10 +393,10 @@ const CreateEditRoles = () => {
                       click={handleCancel}
                       // disableBtn={btnDisabled}
                     />
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid>
+                  </div>
+                </div>
+              </Col>
+            </Row>
           </>
         )}
       </Modal>

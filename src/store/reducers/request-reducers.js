@@ -135,7 +135,7 @@ const requestReducer = (state = initialState, action) => {
         ResponseMessage: action.message,
       };
     default:
-      return { ...state };
+      return state;
   }
 };
 

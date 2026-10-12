@@ -1,32 +1,5 @@
 // all routing related data like rendering components and their paths sits here in this file
-import {
-  SecurityAdminAuditTrail,
-  AddWriteOff,
-  ListWriteOff,
-  ViewWriteOff,
-  CompleteReports,
-  CreditPolicy,
-  BalanceSheetFormat,
-  ApprovalFlow,
-  UserAudit,
-  ApprovalReasons,
-  BorrowerType,
-  ClassificationOfAdvances,
-  ManagementUnit,
-  NatureOfCharge,
-  NatureOfSecurity,
-  ReasonOfWriteOff,
-  RejectionReasons,
-  AddEditUsers,
-  CreateEditRole,
-  UserReports,
-  SystemAdminUserAudit,
-  SystemAdminAuditTrail,
-  PendingApprovals,
-  EditWriteOffDetails,
-  ListOfPendingCases,
-  ListOfApprovedCases
-} from "../Container";
+import { AddEditUsers, CreateEditRole, UserReports } from "../Container";
 import { 
   SecurityAdminLinks,
   // SystemAdminLinks,
