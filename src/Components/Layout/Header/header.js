@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Layout, Typography, Tooltip, Badge } from "antd";
 import UserImage from "../../../assets/images/user.png";
-import Logo from "../../../assets/images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../store/actions/auth-actions";
 import { getApprovalCount } from "../../../store/actions/wof-approvals-actions";
@@ -50,13 +49,7 @@ const Header = ({ Notification, title, UserDetails }) => {
       localStorage.setItem("tabsOpen", parseInt(tabsOpen) + parseInt(1));
     }
 
-    // define decrement counter part
-    window.onunload = function (e) {
-      const newTabCount = localStorage.getItem("tabsOpen");
-      if (newTabCount !== null) {
-        localStorage.setItem("tabsOpen", newTabCount - 1);
-      }
-    };
+    // the decrement counter part is the "pagehide" listener in index.html
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
       window.localStorage.isMySessionActive = "false";
     } else {
@@ -81,12 +74,7 @@ const Header = ({ Notification, title, UserDetails }) => {
   }, []);
   return (
     <Header className="header">
-      {/* logo */}
       <div className="inner-container">
-        <div className="logo-container">
-          <img src={Logo} alt="logo" />
-        </div>
-        {/* middle text */}
         <div className="heading-main-container">
           <Title level={3} className="heading-main">
             {title}
@@ -97,14 +85,13 @@ const Header = ({ Notification, title, UserDetails }) => {
           <Tooltip placement="bottom" title="Back">
             <div className="logout-icon-section">
               <div
+                className="header-icon-card"
                 onClick={() => {
                   window.history.back();
                   dispatch(disableGoBack());
                 }}
               >
-                <div className="logout-icon">
-                  <i className="icon-arrow-left icon-size-one "></i>
-                </div>
+                <i className="icon-arrow-left icon-size-one "></i>
               </div>
             </div>
           </Tooltip>
@@ -113,13 +100,11 @@ const Header = ({ Notification, title, UserDetails }) => {
         {Notification !== null && Notification === true ? (
           <Tooltip placement="bottom" title="Notification">
             <div className="notify">
-              <span className="u-cursor-pointer" onClick={handleClick}>
-                <Badge count={requestReducer.userRequestCount}>
-                  {/* 35px matches MUI fontSize="large" */}
-                  <NotificationsNoneIcon
-                    style={{ fontSize: 35 }}
-                    className="noti-icon"
-                  />
+              <span className="noti-icon" onClick={handleClick}>
+                <Badge count={requestReducer.userRequestCount} offset={[-2, 8]}>
+                  <span className="header-icon-card">
+                    <NotificationsNoneIcon />
+                  </span>
                 </Badge>
               </span>
             </div>
@@ -128,10 +113,11 @@ const Header = ({ Notification, title, UserDetails }) => {
         {/* its logout button */}
         <Tooltip placement="bottom" title="Logout">
           <div className="logout-icon-section">
-            <div onClick={() => dispatch(signOut(navigate))}>
-              <div className="logout-icon">
-                <i className="icon-login icon-size-one "></i>
-              </div>
+            <div
+              className="header-icon-card"
+              onClick={() => dispatch(signOut(navigate))}
+            >
+              <i className="icon-login icon-size-one "></i>
             </div>
           </div>
         </Tooltip>

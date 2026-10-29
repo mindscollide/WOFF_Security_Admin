@@ -2,7 +2,6 @@ import "./App.less";
 import PrivateRoute from "./Routes/PrivateRoute";
 import { Routes, Route, Navigate } from "react-router";
 import Login from "./Container/Authentication/Login/Login";
-import SignUp from "./Container/Authentication/SignUp/SignUp";
 import NotFound from "./Container/404/404";
 import Dashboard from "./Container/Dashboard/dashboard";
 const App = () => {
@@ -10,7 +9,6 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/SignUp" element={<SignUp />} />
         {/* The trailing /* lets Dashboard's own nested <Routes> (CustomRoutes) match below /WofSecurityAdmin */}
         <Route
           path="/WofSecurityAdmin/*"

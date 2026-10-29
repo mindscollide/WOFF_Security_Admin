@@ -357,8 +357,8 @@ const CreateEditRoles = () => {
         {actions.edit && (
           <>
             <div style={{ display: "flex", justifyContent: "center", padding: "40px" }}>
-              <p className="m-0" style={{ color: "#b27706" }}>
-                Type your Comments<span style={{ color: "#ce0000" }}>*</span>
+              <p className="m-0" style={{ color: "#035F5C" }}>
+                Type your Comments<span style={{ color: "#FC4343" }}>*</span>
               </p>
               <TextField
                 multiline

@@ -773,7 +773,7 @@ const AddEditUsers = () => {
           />
         </Col>
         <Col md={12} lg={12} sm={24} align="right">
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", gap: "10px" }}>
             <div style={{ width: "18.75%" }}>
               <Button
                 applyClass="btnDarkSolid"
@@ -786,7 +786,7 @@ const AddEditUsers = () => {
               <Button
                 text="Reset"
                 icon={<Restore />}
-                applyClass="btnSecondarySolid2"
+                applyClass="btnSecondarySolidResetFull"
                 size="small"
                 click={resetData}
               />
