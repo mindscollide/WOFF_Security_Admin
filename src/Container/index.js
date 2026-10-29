@@ -1,7 +1,6 @@
 //>>>>Exports :
 // Login Page
 export { default as Login } from "./Authentication/Login/Login";
-export { default as SignUp } from "./Authentication/SignUp/SignUp";
 // Dashboard
 export { default as Dashboard } from "./Dashboard/dashboard";
 // User Management

@@ -211,7 +211,7 @@ const UserReports = () => {
             <Button
               text="Reset"
               icon={<Restore />}
-              applyClass="btnSecondarySolid"
+              applyClass="btnSecondarySolidReset"
               size="small"
               click={resetData}
             />

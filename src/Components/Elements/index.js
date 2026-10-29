@@ -5,6 +5,7 @@ import Button from './Button/button';
 import Checkbox from './Checkbox/checkbox';
 import DatePicker from './DatePicker/date-picker';
 import FancyBox from './FancyBox/fancy-box';
+import FancyBoxSection from './FancyBox/fancy-box-section';
 import ConsolidateBox from './FancyBox/ConsolidateBox'
 import FilterBar from './FilterBar/filter-bar';
 import GridDataView from './GridDataView/grid-data-view';
@@ -24,6 +25,7 @@ import Loader from './Loader/Loader'
 import {Notification,Message} from './Notifications'
 import {FormattedInputs} from './FormatedInput/FormatedInput'
 import MaxWidthContainer from './MaxWidthContainer/max-width-container'
+import AuthLayout from './AuthLayout/AuthLayout'
 export {
     ADate,
     ADayMonthCount,
@@ -32,6 +34,7 @@ export {
     Checkbox,
     DatePicker,
     FancyBox,
+    FancyBoxSection,
     FilterBar,
     GridDataView,
     GroupedButtons,
@@ -51,6 +54,7 @@ export {
     Message,
     ConsolidateBox,
     FormattedInputs,
-    MaxWidthContainer
+    MaxWidthContainer,
+    AuthLayout
 }
 

@@ -1,4 +1,5 @@
 // all routing related data like rendering components and their paths sits here in this file
+import { APP_NAME } from "../Common/app-name";
 import { AddEditUsers, CreateEditRole, UserReports } from "../Container";
 import { 
   SecurityAdminLinks,
@@ -20,7 +21,7 @@ const UserSelection = (token,role)=>{
   let MainMenu = ''
   let Notification = ''
   if(token && role===1){
-    Title ="WOFF Data Centralization & MIS Capturing"
+    Title = APP_NAME
     UserRoleId = role
     SidebarData = SecurityAdminLinks
     MainMenu = SecurityAdminRouteData
